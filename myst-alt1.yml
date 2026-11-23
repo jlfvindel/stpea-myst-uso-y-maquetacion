@@ -1,0 +1,32 @@
+# -------------------------------------------------------------
+#  myst-alt1.yml · Edición breve para una sesión de clase
+#  Se usa con:  myst --config myst-alt1.yml start
+#
+#  Diferencias con myst.yml:
+#    - otro título, para que se note qué configuración está activa
+#    - los ejemplos van primero
+#    - no incluye la página «Exportar»
+#    - el menú es plano: sin grupos
+# -------------------------------------------------------------
+version: 1
+
+project:
+  title: 'Proyecto 1 · Edición breve'
+  authors:
+    - name: José Luis Fernández Vindel
+  license: CC-BY-4.0
+
+  downloads:
+    - file: descargas/uso-y-maquetacion.zip
+      title: Fuente del proyecto (zip)
+
+  toc:
+    - file: index.md
+    - file: ejemplos/texto.md
+    - file: ejemplos/bloques.md
+    - file: ejemplos/tablas.md
+    - file: uso/que-es-myst.md
+    - file: uso/ejecutar.md
+
+site:
+  template: book-theme

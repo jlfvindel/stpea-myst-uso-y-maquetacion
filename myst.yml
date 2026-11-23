@@ -1,0 +1,50 @@
+# -------------------------------------------------------------
+#  myst.yml · Configuración principal del proyecto 1
+#  Se usa al ejecutar `myst start` o `myst build` sin más opciones.
+# -------------------------------------------------------------
+version: 1
+
+project:
+  title: 'Proyecto 1: usar MyST y maquetar'
+  authors:
+    - name: José Luis Fernández Vindel
+  license: CC-BY-4.0
+
+  # Fuente del proyecto: aparece en el botón de descarga de cada página.
+  downloads:
+    - file: descargas/uso-y-maquetacion.zip
+      title: Fuente del proyecto (zip)
+
+  # Índice: define el menú lateral y el orden de las páginas.
+  toc:
+    - file: index.md                   # la primera entrada es la portada
+
+    - title: Usar MyST                 # grupo SIN página propia
+      children:
+        - file: uso/que-es-myst.md
+        - file: uso/ejecutar.md
+        - file: uso/exportar.md
+
+    - file: ejemplos/texto.md          # grupo CON página propia:
+      children:                        # «Texto» se visita y además agrupa
+        - file: ejemplos/bloques.md
+        - file: ejemplos/tablas.md
+
+  # Formatos además de la web (véase la página «Exportar»).
+  # Se generan con `myst build --typst`, `--pdf` o `--docx`.
+  exports:
+    - id: pdf-typst                    # PDF del proyecto entero con Typst
+      format: typst
+      template: plain_typst_book
+      output: exports/proyecto-1-typst.pdf
+    - id: pdf-latex                    # PDF del proyecto entero con LaTeX
+      format: pdf
+      template: plain_latex_book
+      output: exports/proyecto-1-latex.pdf
+    - id: word                         # Word admite un solo documento
+      format: docx
+      articles: ejemplos/tablas.md
+      output: exports/tablas.docx
+
+site:
+  template: book-theme                 # el tema por defecto
